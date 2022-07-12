@@ -1,0 +1,18 @@
+stages:
+  - build
+  
+buildJob:
+  stage: build
+  image: mcr.microsoft.com/dotnet/core/sdk:3.1
+  
+  script:
+    - curl -L -o "MelissaDataEmailObjectWindowsNETExample/mdEmailNET.dll" "https://releases.melissadata.net/Download/Interface/WINDOWS/NET/ANY/2020.09/mdEmailNET.dll/?ID=$K8S_SECRET_LICENSE_1**$K8S_SECRET_LICENSE_2**$K8S_SECRET_LICENSE_3**"
+    - dotnet publish -c Release -o Artifacts MelissaDataEmailObjectWindowsNETExample/MelissaDataEmailObjectWindowsNETExample.csproj
+
+  artifacts:
+    paths:
+      - Artifacts/
+    expire_in: 1 week
+    
+  tags:
+    - docker-linux
