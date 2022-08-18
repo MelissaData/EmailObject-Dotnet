@@ -18,7 +18,7 @@ class DLLConfig {
 
 ######################### Config ###########################
 
-$RELEASE_VERSION = '2022.06' # modify for other release version. For example: '2021.07'
+$RELEASE_VERSION = '2022.07'
 $ProductName = "DQ_EMAIL_DATA"
 
 # Uses the location of the .ps1 file 
