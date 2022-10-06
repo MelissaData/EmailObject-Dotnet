@@ -3,6 +3,17 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# EmailObject
+[Mm]elissa[Uu]pdater/
+[Mm]elissa[Dd]ata[Ee]mail[Oo]bject[Ww]indows[Nn][Ee][Tt][Ee]xample/[Dd]ata
+[Mm]elissa[Dd]ata[Ee]mail[Oo]bject[Ww]indows[Nn][Ee][Tt][Ee]xample/[Bb]uild
+*.dll
+*.exe
+*.hash
+*.dll.hash
+*.deps.json
+*.runtimeconfig.json
+
 # User-specific files
 *.rsuser
 *.suo
@@ -26,7 +37,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-[Bb]uild/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -342,15 +352,3 @@ healthchecksdb
 
 # Data
 Data/
-
-#Wrapper
-mdPhoneNET.dll
-
-#.exe files
-*.exe
-
-# Build
-[Bb]uild/
-
-# MelissaUpdater
-MelissaUpdater/
