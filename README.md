@@ -1,9 +1,9 @@
-# Melissa Data Email Object Windows Net Example
+# Melissa Data Email Object Windows Net Sample
 
 
 ## Purpose
 
-This is an example of the Melissa Data Email Object using C#
+This is a sample of the Melissa Data Email Object using C#
 
 The console will ask the user for:
 
@@ -19,9 +19,9 @@ And return
 
 ## Tested Environments
 
-- Windows 64-bit .NET Core 3.1 and .NET 5.0
+- Windows 64-bit .NET 6.0, .NET 5.0, .NET Core 3.1
 - Powershell 5.1
-- Melissa data files for 2022-11
+- Melissa data files for 2022-12
 
 ## Required File(s) and Programs
 
@@ -37,28 +37,28 @@ This is the c++ code of the Melissa Data Object.
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-This project is compatible with both .NET Core 3.1 and .NET 5.0. If you would like to run this project for .NET 5.0, proceed with the following procedures but check for and download .NET 5.0 instead.
+This project is compatible with .NET 6.0, .NET 5.0, and .NET Core 3.1. If you would like to run this project for any other version besides .NET 6.0, proceed with the following procedures but check for and download your desired .NET version.
 
 #### Install the Dotnet Core SDK
-Before starting, make sure that the .NET Core 3.1 SDK has been correctly installed on your machine (If you have Visual Studio installed, you most likely have it already). If you are unsure, you can check by opening a command prompt window and typing the following:
+Before starting, make sure that the .NET 6.0 SDK has been correctly installed on your machine (If you have Visual Studio installed, you most likely have it already). If you are unsure, you can check by opening a command prompt window and typing the following:
 
 `dotnet --list-sdks`
 
-If the .NET Core 3.1 SDK is already installed, you should see it in the following list:
+If the .NET 6.0 SDK is already installed, you should see it in the following list:
 
 ![alt text](/screenshots/dotnet_output.PNG)
 
-As long as the above list contains version `3.1.xxx` (underlined in red), then you can skip to the next step. If your list does not contain version 3.1, or you get any kind of error message, then you will need to download and install the .NET Core 3.1 SDK from the Microsoft website.
+As long as the above list contains version `6.0.xxx` (underlined in red), then you can skip to the next step. If your list does not contain version 6.0, or you get any kind of error message, then you will need to download and install the .NET 6.0 SDK from the Microsoft website.
 
 To download, follow this link: https://dotnet.microsoft.com/en-us/download/dotnet
 
-Select `.NET Core 3.1` and you will be navigated to the download page.
+Select `.NET 6.0` and you will be navigated to the download page.
 
 Click and download the `x64` SDK installer for your operating system.
 
 (IMPORTANT: Make sure you download the SDK, NOT the runtime. The SDK contains both the runtime as well as the tools needed to build the project.)
 
-![alt text](/screenshots/microsoft_website_ss.PNG)
+![alt text](/screenshots/net6.png)
 
 Once clicked, your web browser will begin downloading an installer for the SDK. Run the installer and follow all of the prompts to complete the installation (your computer may ask you to restart before you can continue). Once all of that is done, you should be able to verify that the SDK is installed with the `dotnet --list-sdks` command.
 
@@ -96,21 +96,21 @@ Melissa Updater is a CLI application allowing the user to update their Melissa a
 	- It will handle all of the data download/path and dll(s) for you. 
 2.  If you already have the latest DQS Release (ZIP), you can find the data file(s) and dll(s) in there
 	- Use the location of where you copied/installed the data and update the "$DataPath" variable in the powershell script.
-	- Copy all the dll(s) mentioned above into the `MelissaDataEmailObjectWindowsNETExample` project folder.
+	- Copy all the dll(s) mentioned above into the `MelissaDataEmailObjectWindowsNETSample` project folder.
 
 ----------------------------------------
 
 #### Configure Target Framework
 
-Depending on your target .NET framework, you may need to configure the powershell script. In order to do this, open up the `MelissaDataEmailObjectWindowsNETExample.ps1` for editing, proceed to the bottom of the script where you will find this section of code.
+Depending on your target .NET framework, you may need to configure the powershell script. In order to do this, open up the `MelissaDataEmailObjectWindowsNETSample.ps1` for editing, proceed to the bottom of the script where you will find this section of code.
 
-Default set for .NET Core 3.1
+Default set for .NET 6.0
 ```
-#dotnet publish -f="net5.0" -c Release -o $ProjectPath\Build MelissaDataEmailObjectWindowsNETExample\MelissaDataEmailObjectWindowsNETExample.csproj
-dotnet publish -f="netcoreapp3.1" -c Release -o $ProjectPath\Build MelissaDataEmailObjectWindowsNETExample\MelissaDataEmailObjectWindowsNETExample.csproj
+dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
+#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
+#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
 ```
-
-The target framework is specified with the -f flag found in the command line. If you wish to use the .NET 5.0 framework, please uncomment the line containing that framework and comment out the line containing the .NET Core 3.1 framework (# to comment).
+The target framework is specified with the -f flag found in the command line. If you wish to use any version besides .NET 6.0, please uncomment the line containing that framework and comment out the line containing the .NET 6.0 framework (# to comment).
 
 ## Run Powershell Script
 
@@ -128,23 +128,23 @@ When you have modified the script to match your data location, let's run the scr
 
 	The script will prompt the user for an email address, then use the provided email to test Email object. For example:
 	```
-	$ .\MelissaDataEmailObjectWindowsNETExample.ps1
+	$ .\MelissaDataEmailObjectWindowsNETSample.ps1
 	```
     For quiet mode:
     ```
-    $ .\MelissaDataEmailObjectWindowsNETExample.ps1 -quiet
+    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -quiet
     ```
 - Command Line 
 
 	You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email object. For example:
 	```
-    $ .\MelissaDataEmailObjectWindowsNETExample.ps1 -email "info@melissa.com"
-    $ .\MelissaDataEmailObjectWindowsNETExample.ps1 -email "info@melissa.com" -license "<your_license_string>"
+    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com"
+    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -license "<your_license_string>"
     ```
 	For quiet mode:
     ```
-    $ .\MelissaDataEmailObjectWindowsNETExample.ps1 -email "info@melissa.com" -quiet
-    $ .\MelissaDataEmailObjectWindowsNETExample.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
+    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -quiet
+    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
     ```
 This is the expected output from a successful setup for interactive mode:
 
@@ -152,7 +152,7 @@ This is the expected output from a successful setup for interactive mode:
 
 ## Troubleshooting
 
-Troubleshooting for errors found while running your example program.
+Troubleshooting for errors found while running your sample program.
 
 ### C# Errors:
 

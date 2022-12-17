@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "MelissaDataEmailObjectWindowsNETExample": {
-      "commandName": "Project",
-      "commandLineArgs": "--license \"JQZol72tRtlyISOjHlUh81**mGQudQEVpCWoPSdklbj-9b**OQwgFggdODWI6yWLVNL8d9**\" --datapath \".\\Data\""
-    }
-  }
-}
