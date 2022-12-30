@@ -50,7 +50,7 @@ namespace MelissaDataEmailObjectWindowsNETSample
 
     static void RunAsConsole(string license, string testEmail, string dataPath)
     {
-      Console.WriteLine("\n\n===== WELCOME TO MELISSA DATA EMAIL OBJECT WINDOWS NET SAMPLE =====\n");
+      Console.WriteLine("\n\n====== WELCOME TO MELISSA DATA EMAIL OBJECT WINDOWS NET SAMPLE =====\n");
 
       EmailObject emailObject = new EmailObject(license, dataPath);
 
