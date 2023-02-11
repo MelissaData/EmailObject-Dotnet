@@ -1,5 +1,5 @@
-﻿# Name:    MelissaDataEmailObjectWindowsNET
-# Purpose: Use the MelissaUpdater to make the MelissaDataEmailObjectWindowsNET sample usable
+﻿# Name:    MelissaEmailObjectWindowsDotnet
+# Purpose: Use the MelissaUpdater to make the MelissaEmailObjectWindowsDotnet code usable
 
 ######################### Parameters ##########################
 
@@ -25,7 +25,7 @@ $ProductName = "DQ_EMAIL_DATA"
 # Modify this if you want to use 
 $CurrentPath = $PSScriptRoot
 Set-Location $CurrentPath
-$ProjectPath = "$CurrentPath\MelissaDataEmailObjectWindowsNETSample"
+$ProjectPath = "$CurrentPath\MelissaEmailObjectWindowsDotnet"
 $DataPath = "$ProjectPath\Data"
 $BuildPath = "$ProjectPath\Build"
 
@@ -108,7 +108,7 @@ function CheckDLLs() {
 
 ########################## Main ############################
 
-Write-Host "`n=============== Sample of Melissa Data Email Object ===============`n                    [ .NET | Windows | 64BIT ]`n"
+Write-Host "`n======================= Melissa Email Object =======================`n                    [ .NET | Windows | 64BIT ]`n"
 
 # Get license (either from parameters or user input)
 if ([string]::IsNullOrEmpty($license)) {
@@ -146,20 +146,20 @@ if (!$DLLsAreDownloaded) {
 
 Write-Host "All file(s) have been downloaded/updated!"
 
-# Start sample
+# Start program
 # Build project
 Write-Host "`n=========================== BUILD PROJECT =========================="
 # Target frameworks net7.0, net6.0, net5.0, netcoreapp3.1
 # Please comment out the version that you don't want to use and uncomment the one that you do want to use
-dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
+dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
 
 # Run project
 if ([string]::IsNullOrEmpty($email)) {
-  dotnet $BuildPath\MelissaDataEmailObjectWindowsNETSample.dll --license $License  --dataPath $DataPath
+  dotnet $BuildPath\MelissaEmailObjectWindowsDotnet.dll --license $License  --dataPath $DataPath
 }
 else {
-  dotnet $BuildPath\MelissaDataEmailObjectWindowsNETSample.dll --license $License  --dataPath $DataPath --email $email
+  dotnet $BuildPath\MelissaEmailObjectWindowsDotnet.dll --license $License  --dataPath $DataPath --email $email
 }

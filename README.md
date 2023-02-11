@@ -1,9 +1,12 @@
-# Melissa Data Email Object Windows Net Sample
-
+# Melissa - Email Object Windows Dotnet
 
 ## Purpose
 
-This is a sample of the Melissa Data Email Object using C#
+This code showcases the Melissa Data Email Object using C#.
+
+Please feel free to copy or embed this code to your own project. Happy coding!
+
+For the latest Melissa Email Object release notes, please visit: https://releasenotes.melissa.com/on-premise-api/email-object/
 
 The console will ask the user for:
 
@@ -27,7 +30,7 @@ And return
 
 #### mdEmail.dll
 
-This is the c++ code of the Melissa Data Object.
+This is the c++ code of the Melissa Object.
 
 #### Data File(s)
 
@@ -96,20 +99,20 @@ Melissa Updater is a CLI application allowing the user to update their Melissa a
 	- It will handle all of the data download/path and dll(s) for you. 
 2.  If you already have the latest DQS Release (ZIP), you can find the data file(s) and dll(s) in there
 	- Use the location of where you copied/installed the data and update the "$DataPath" variable in the powershell script.
-	- Copy all the dll(s) mentioned above into the `MelissaDataEmailObjectWindowsNETSample` project folder.
+	- Copy all the dll(s) mentioned above into the `MelissaEmailObjectWindowsDotnet` project folder.
 
 ----------------------------------------
 
 #### Configure Target Framework
 
-Depending on your target .NET framework, you may need to configure the powershell script. In order to do this, open up the `MelissaDataEmailObjectWindowsNETSample.ps1` for editing, proceed to the bottom of the script where you will find this section of code.
+Depending on your target .NET framework, you may need to configure the powershell script. In order to do this, open up the `MelissaEmailObjectWindowsDotnet.ps1` for editing, proceed to the bottom of the script where you will find this section of code.
 
 Default set for .NET 7.0
 ```
-dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
-#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaDataEmailObjectWindowsNETSample\MelissaDataEmailObjectWindowsNETSample.csproj
+dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
 ```
 The target framework is specified with the -f flag found in the command line. If you wish to use any version besides .NET 7.0, please uncomment the line containing that framework and comment out the line containing the .NET 7.0 framework (# to comment).
 
@@ -120,32 +123,32 @@ Parameters:
  	
   This is convenient when you want to get results for a specific email address in one run instead of testing multiple email addresses in interactive mode.  
 
-- -license (optional): a license string to test the email object
+- -license (optional): a license string to test the Email Object
 
 - -quiet (optional): add to the command if you do not want to get any console output from the Melissa Updater
 
 When you have modified the script to match your data location, let's run the script. There are two modes:
 - Interactive 
 
-	The script will prompt the user for an email address, then use the provided email to test Email object. For example:
+	The script will prompt the user for an email address, then use the provided email to test Email Object. For example:
 	```
-	$ .\MelissaDataEmailObjectWindowsNETSample.ps1
+	$ .\MelissaEmailObjectWindowsDotnet.ps1
 	```
     For quiet mode:
     ```
-    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -quiet
+    $ .\MelissaEmailObjectWindowsDotnet.ps1 -quiet
     ```
 - Command Line 
 
-	You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email object. For example:
+	You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email Object. For example:
 	```
-    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com"
-    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -license "<your_license_string>"
+    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com"
+    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>"
     ```
 	For quiet mode:
     ```
-    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -quiet
-    $ .\MelissaDataEmailObjectWindowsNETSample.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
+    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -quiet
+    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
     ```
 This is the expected output from a successful setup for interactive mode:
 
@@ -153,7 +156,7 @@ This is the expected output from a successful setup for interactive mode:
 
 ## Troubleshooting
 
-Troubleshooting for errors found while running your sample program.
+Troubleshooting for errors found while running your program.
 
 ### C# Errors:
 
@@ -166,8 +169,6 @@ Troubleshooting for errors found while running your sample program.
 
 ## Contact Us
 
-For free technical support, please call us at 800-MELISSA ext. 4
-(800-635-4772 ext. 4) or email us at tech@MelissaData.com.
+For free technical support, please call us at 800-MELISSA ext. 4 (800-635-4772 ext. 4) or email us at tech@melissa.com.
 
-To purchase this product, contact Melissa Data sales department at
-800-MELISSA ext. 3 (800-635-4772 ext. 3).
+To purchase this product, contact the Melissa sales department at 800-MELISSA ext. 3 (800-635-4772 ext. 3).

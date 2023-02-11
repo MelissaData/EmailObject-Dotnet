@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelissaDataEmailObjectWindowsNETSample", "MelissaDataEmailObjectWindowsNETSample.csproj", "{5C6F1036-C154-4382-9A1D-6B617AFBA7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MelissaEmailObjectWindowsDotnet", "MelissaEmailObjectWindowsDotnet.csproj", "{4364A35F-C76E-4D6E-887D-553E6C7A3272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C6F1036-C154-4382-9A1D-6B617AFBA7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C6F1036-C154-4382-9A1D-6B617AFBA7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C6F1036-C154-4382-9A1D-6B617AFBA7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C6F1036-C154-4382-9A1D-6B617AFBA7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4364A35F-C76E-4D6E-887D-553E6C7A3272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4364A35F-C76E-4D6E-887D-553E6C7A3272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4364A35F-C76E-4D6E-887D-553E6C7A3272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4364A35F-C76E-4D6E-887D-553E6C7A3272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
