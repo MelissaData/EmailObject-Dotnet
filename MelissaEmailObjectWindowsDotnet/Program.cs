@@ -81,21 +81,21 @@ namespace MelissaEmailObjectWindowsDotnet
 
         // Print user input
         Console.WriteLine("\n============================== INPUTS ==============================\n");
-        Console.WriteLine($"\t               Email: {dataContainer.Email}");
+        Console.WriteLine($"\t                Email: {dataContainer.Email}");
 
         // Execute Email Object
         emailObject.ExecuteObjectAndResultCodes(ref dataContainer);
 
         // Print output
         Console.WriteLine("\n============================== OUTPUT ==============================\n");
-        Console.WriteLine("\n\tEmail Object Information:");
+        Console.WriteLine("\n\t     Email Object Information:");
 
-        Console.WriteLine($"\t                    Email: {dataContainer.Email}");
-        Console.WriteLine($"\t              MailBoxName: {emailObject.mdEmailObj.GetMailBoxName()}");
-        Console.WriteLine($"\t               DomainName: {emailObject.mdEmailObj.GetDomainName()}");
-        Console.WriteLine($"\t           TopLevelDomain: {emailObject.mdEmailObj.GetTopLevelDomain()}");
-        Console.WriteLine($"\tTopLevelDomainDescription: {emailObject.mdEmailObj.GetTopLevelDomainDescription()}");
-        Console.WriteLine($"\t             Result Codes: {dataContainer.ResultCodes}");
+        Console.WriteLine($"\t                       Email: {dataContainer.Email}");
+        Console.WriteLine($"\t                Mailbox Name: {emailObject.mdEmailObj.GetMailBoxName()}");
+        Console.WriteLine($"\t                 Domain Name: {emailObject.mdEmailObj.GetDomainName()}");
+        Console.WriteLine($"\t            Top-Level Domain: {emailObject.mdEmailObj.GetTopLevelDomain()}");
+        Console.WriteLine($"\tTop-Level Domain Description: {emailObject.mdEmailObj.GetTopLevelDomainDescription()}");
+        Console.WriteLine($"\t                Result Codes: {dataContainer.ResultCodes}");
 
         String[] rs = dataContainer.ResultCodes.Split(',');
         foreach (String r in rs)

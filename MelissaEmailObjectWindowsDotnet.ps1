@@ -7,7 +7,7 @@ param($email = '""', $license = '', [switch]$quiet = $false)
 
 ######################### Classes ##########################
 
-class DLLConfig {
+class FileConfig {
   [string] $FileName;
   [string] $ReleaseVersion;
   [string] $OS;
@@ -18,7 +18,7 @@ class DLLConfig {
 
 ######################### Config ###########################
 
-$RELEASE_VERSION = '2023.06'
+$RELEASE_VERSION = '2023.07'
 $ProductName = "DQ_EMAIL_DATA"
 
 # Uses the location of the .ps1 file 
@@ -37,7 +37,7 @@ If (!(Test-Path $BuildPath)) {
 }
 
 $DLLs = @(
-  [DLLConfig]@{
+  [FileConfig]@{
     FileName       = "mdEmail.dll";
     ReleaseVersion = $RELEASE_VERSION;
     OS             = "WINDOWS";
@@ -46,6 +46,15 @@ $DLLs = @(
     Type           = "BINARY";
   }
 )
+
+$Wrapper          = [FileConfig]@{
+  FileName        = "mdEmail_cSharpCode.cs";
+  ReleaseVersion  = $RELEASE_VERSION;
+  OS              = "ANY";
+  Compiler        = "NET";
+  Architecture    = "ANY" ;
+  Type            = "INTERFACE"
+}
 
 ######################## Functions #########################
 
@@ -90,6 +99,28 @@ function DownloadDLLs() {
   }
 }
 
+function DownloadWrapper() {
+  Write-Host "MELISSA UPDATER IS DOWNLOADING WRAPPER(s)..."
+
+  # Check for quiet mode
+  if ($quiet) {
+    .\MelissaUpdater\MelissaUpdater.exe file --filename $Wrapper.FileName --release_version $Wrapper.ReleaseVersion --license $LICENSE --os $Wrapper.OS --compiler $Wrapper.Compiler --architecture $Wrapper.Architecture --type $Wrapper.Type --target_directory $ProjectPath > $null
+    if(($?) -eq $False) {
+        Write-Host "`nCannot run Melissa Updater. Please check your license string!"
+        Exit
+    }
+  }
+  else {
+    .\MelissaUpdater\MelissaUpdater.exe file --filename $Wrapper.FileName --release_version $Wrapper.ReleaseVersion --license $LICENSE --os $Wrapper.OS --compiler $Wrapper.Compiler --architecture $Wrapper.Architecture --type $Wrapper.Type --target_directory $ProjectPath 
+    if(($?) -eq $False) {
+        Write-Host "`nCannot run Melissa Updater. Please check your license string!"
+        Exit
+    }
+  }
+
+  Write-Host "Melissa Updater finished downloading " $Wrapper.FileName "!"
+}
+
 function CheckDLLs() {
   Write-Host "`nDouble checking dll(s) were downloaded."
   $FileMissing = $false
@@ -108,7 +139,7 @@ function CheckDLLs() {
 
 ########################## Main ############################
 
-Write-Host "`n======================= Melissa Email Object =======================`n                    [ .NET | Windows | 64BIT ]`n"
+Write-Host "`n======================= Melissa Email Object =======================`n                     [ .NET | Windows | 64BIT ]`n"
 
 # Get license (either from parameters or user input)
 if ([string]::IsNullOrEmpty($license)) {
@@ -135,6 +166,9 @@ DownloadDataFiles -license $License      # comment out this line if using DQS Re
 # Download dll(s)
 DownloadDlls -license $License
 
+# Download wrapper(s)
+DownloadWrapper -license $License
+
 # Check if all dll(s) have been downloaded Exit script if missing
 $DLLsAreDownloaded = CheckDLLs
 
@@ -149,12 +183,8 @@ Write-Host "All file(s) have been downloaded/updated!"
 # Start program
 # Build project
 Write-Host "`n=========================== BUILD PROJECT =========================="
-# Target frameworks net7.0, net6.0, net5.0, netcoreapp3.1
-# Please comment out the version that you don't want to use and uncomment the one that you do want to use
+
 dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
-#dotnet publish -f="net6.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
-#dotnet publish -f="net5.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
-#dotnet publish -f="netcoreapp3.1" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
 
 # Run project
 if ([string]::IsNullOrEmpty($email)) {
