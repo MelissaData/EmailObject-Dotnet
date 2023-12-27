@@ -142,13 +142,13 @@ namespace MelissaData {
 		}
 
 		public bool SetLicenseString(string License) {
-			Utf8String u_License = new Utf8String(License);
-			return (mdEmailUnmanaged.mdEmailSetLicenseString(i, u_License.GetUtf8Ptr()) != 0);
+			EncodedString u_License = new EncodedString(License);
+			return (mdEmailUnmanaged.mdEmailSetLicenseString(i, u_License.GetPtr()) != 0);
 		}
 
 		public void SetPathToEmailFiles(string emailDataFiles) {
-			Utf8String u_emailDataFiles = new Utf8String(emailDataFiles);
-			mdEmailUnmanaged.mdEmailSetPathToEmailFiles(i, u_emailDataFiles.GetUtf8Ptr());
+			EncodedString u_emailDataFiles = new EncodedString(emailDataFiles);
+			mdEmailUnmanaged.mdEmailSetPathToEmailFiles(i, u_emailDataFiles.GetPtr());
 		}
 
 		public ProgramStatus InitializeDataFiles() {
@@ -156,28 +156,28 @@ namespace MelissaData {
 		}
 
 		public string GetInitializeErrorString() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetInitializeErrorString(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetInitializeErrorString(i));
 		}
 
 		public string GetBuildNumber() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetBuildNumber(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetBuildNumber(i));
 		}
 
 		public string GetDatabaseDate() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetDatabaseDate(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetDatabaseDate(i));
 		}
 
 		public string GetDatabaseExpirationDate() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetDatabaseExpirationDate(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetDatabaseExpirationDate(i));
 		}
 
 		public string GetLicenseStringExpirationDate() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetLicenseStringExpirationDate(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetLicenseStringExpirationDate(i));
 		}
 
 		public bool VerifyEmail(string email) {
-			Utf8String u_email = new Utf8String(email);
-			return (mdEmailUnmanaged.mdEmailVerifyEmail(i, u_email.GetUtf8Ptr()) != 0);
+			EncodedString u_email = new EncodedString(email);
+			return (mdEmailUnmanaged.mdEmailVerifyEmail(i, u_email.GetPtr()) != 0);
 		}
 
 		public void SetCorrectSyntax(bool p1) {
@@ -213,15 +213,15 @@ namespace MelissaData {
 		}
 
 		public string GetStatusCode() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetStatusCode(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetStatusCode(i));
 		}
 
 		public string GetErrorCode() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetErrorCode(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetErrorCode(i));
 		}
 
 		public string GetErrorString() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetErrorString(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetErrorString(i));
 		}
 
 		public uint GetChangeCode() {
@@ -229,88 +229,89 @@ namespace MelissaData {
 		}
 
 		public string GetResults() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetResults(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetResults(i));
 		}
 
 		public string GetResultCodeDescription(string resultCode, ResultCdDescOpt opt) {
-			Utf8String u_resultCode = new Utf8String(resultCode);
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetResultCodeDescription(i, u_resultCode.GetUtf8Ptr(), (int)opt));
+			EncodedString u_resultCode = new EncodedString(resultCode);
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetResultCodeDescription(i, u_resultCode.GetPtr(), (int)opt));
 		}
 
 		public string GetResultCodeDescription(string resultCode) {
-			Utf8String u_resultCode = new Utf8String(resultCode);
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetResultCodeDescription(i, u_resultCode.GetUtf8Ptr(), (int)ResultCdDescOpt.ResultCodeDescriptionLong));
+			EncodedString u_resultCode = new EncodedString(resultCode);
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetResultCodeDescription(i, u_resultCode.GetPtr(), (int)ResultCdDescOpt.ResultCodeDescriptionLong));
 		}
 
 		public string GetMailBoxName() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetMailBoxName(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetMailBoxName(i));
 		}
 
 		public string GetDomainName() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetDomainName(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetDomainName(i));
 		}
 
 		public string GetTopLevelDomain() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetTopLevelDomain(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetTopLevelDomain(i));
 		}
 
 		public string GetTopLevelDomainDescription() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetTopLevelDomainDescription(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetTopLevelDomainDescription(i));
 		}
 
 		public string GetEmailAddress() {
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetEmailAddress(i));
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetEmailAddress(i));
 		}
 
 		public void SetReserved(string Property, string Value_) {
-			Utf8String u_Property = new Utf8String(Property);
-			Utf8String u_Value_ = new Utf8String(Value_);
-			mdEmailUnmanaged.mdEmailSetReserved(i, u_Property.GetUtf8Ptr(), u_Value_.GetUtf8Ptr());
+			EncodedString u_Property = new EncodedString(Property);
+			EncodedString u_Value_ = new EncodedString(Value_);
+			mdEmailUnmanaged.mdEmailSetReserved(i, u_Property.GetPtr(), u_Value_.GetPtr());
 		}
 
 		public string GetReserved(string Property_) {
-			Utf8String u_Property_ = new Utf8String(Property_);
-			return Utf8String.GetUnicodeString(mdEmailUnmanaged.mdEmailGetReserved(i, u_Property_.GetUtf8Ptr()));
+			EncodedString u_Property_ = new EncodedString(Property_);
+			return EncodedString.GetEncodedString(mdEmailUnmanaged.mdEmailGetReserved(i, u_Property_.GetPtr()));
 		}
 
 		public void SetCachePath(string cachePath) {
-			Utf8String u_cachePath = new Utf8String(cachePath);
-			mdEmailUnmanaged.mdEmailSetCachePath(i, u_cachePath.GetUtf8Ptr());
+			EncodedString u_cachePath = new EncodedString(cachePath);
+			mdEmailUnmanaged.mdEmailSetCachePath(i, u_cachePath.GetPtr());
 		}
 
 		public void SetCacheUse(int cacheUse) {
 			mdEmailUnmanaged.mdEmailSetCacheUse(i, cacheUse);
 		}
 
-		private class Utf8String : IDisposable {
-			private IntPtr utf8String = IntPtr.Zero;
+		private class EncodedString : IDisposable {
+			private IntPtr encodedString = IntPtr.Zero;
+			private static Encoding encoding = Encoding.UTF8;
 
-			public Utf8String(string str) {
+			public EncodedString(string str) {
 				if (str == null)
 					str = "";
-				byte[] buffer = Encoding.UTF8.GetBytes(str);
+				byte[] buffer = encoding.GetBytes(str);
 				Array.Resize(ref buffer, buffer.Length + 1);
 				buffer[buffer.Length - 1] = 0;
-				utf8String = Marshal.AllocHGlobal(buffer.Length);
-				Marshal.Copy(buffer, 0, utf8String, buffer.Length);
+				encodedString = Marshal.AllocHGlobal(buffer.Length);
+				Marshal.Copy(buffer, 0, encodedString, buffer.Length);
 			}
 
-			~Utf8String() {
+			~EncodedString() {
 				Dispose();
 			}
 
 			public virtual void Dispose() {
 				lock (this) {
-					Marshal.FreeHGlobal(utf8String);
+					Marshal.FreeHGlobal(encodedString);
 					GC.SuppressFinalize(this);
 				}
 			}
 
-			public IntPtr GetUtf8Ptr() {
-				return utf8String;
+			public IntPtr GetPtr() {
+				return encodedString;
 			}
 
-			public static string GetUnicodeString(IntPtr ptr) {
+			public static string GetEncodedString(IntPtr ptr) {
 				if (ptr == IntPtr.Zero)
 					return "";
 				int len = 0;
@@ -320,7 +321,7 @@ namespace MelissaData {
 					return "";
 				byte[] buffer = new byte[len];
 				Marshal.Copy(ptr, buffer, 0, len);
-				return Encoding.UTF8.GetString(buffer);
+				return encoding.GetString(buffer);
 			}
 		}
 	}
