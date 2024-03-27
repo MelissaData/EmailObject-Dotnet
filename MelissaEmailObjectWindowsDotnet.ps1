@@ -18,22 +18,22 @@ class FileConfig {
 
 ######################### Config ###########################
 
-$RELEASE_VERSION = '2024.02'
+$RELEASE_VERSION = '2024.03'
 $ProductName = "DQ_EMAIL_DATA"
 
 # Uses the location of the .ps1 file 
-# Modify this if you want to use 
 $CurrentPath = $PSScriptRoot
 Set-Location $CurrentPath
 $ProjectPath = "$CurrentPath\MelissaEmailObjectWindowsDotnet"
-$DataPath = "$ProjectPath\Data"
-$BuildPath = "$ProjectPath\Build"
 
-If (!(Test-Path $DataPath)) {
-  New-Item -Path $ProjectPath -Name 'Data' -ItemType "directory"
-}
+$BuildPath = "$ProjectPath\Build"
 If (!(Test-Path $BuildPath)) {
   New-Item -Path $ProjectPath -Name 'Build' -ItemType "directory"
+}
+
+$DataPath = "$ProjectPath\Data" # To use your own data file(s), change to your DQS release data file(s) directory
+If (!(Test-Path $DataPath) -and ($DataPath -eq "$ProjectPath\Data")) {
+  New-Item -Path $ProjectPath -Name 'Data' -ItemType "directory"
 }
 
 $DLLs = @(
@@ -148,7 +148,7 @@ if ([string]::IsNullOrEmpty($license)) {
 
 # Check for License from Environment Variables 
 if ([string]::IsNullOrEmpty($License)) {
-  $License = $env:MD_LICENSE # Get-ChildItem -Path Env:\MD_LICENSE   #[System.Environment]::GetEnvironmentVariable('MD_LICENSE')
+  $License = $env:MD_LICENSE 
 }
 
 if ([string]::IsNullOrEmpty($License)) {
@@ -158,10 +158,7 @@ if ([string]::IsNullOrEmpty($License)) {
 
 # Use Melissa Updater to download data file(s)
 # Download data file(s)
-DownloadDataFiles -license $License      # comment out this line if using DQS Release
-
-# Set data file(s) path
-#$DataPath = "C:\\Program Files\\Melissa DATA\\DQT\\Data"      # uncomment this line and change to your DQS Release data file(s) directory 
+DownloadDataFiles -license $License # Comment out this line if using own DQS release
 
 # Download dll(s)
 DownloadDlls -license $License
@@ -169,7 +166,7 @@ DownloadDlls -license $License
 # Download wrapper(s)
 DownloadWrapper -license $License
 
-# Check if all dll(s) have been downloaded Exit script if missing
+# Check if all dll(s) have been downloaded. Exit script if missing
 $DLLsAreDownloaded = CheckDLLs
 
 if (!$DLLsAreDownloaded) {

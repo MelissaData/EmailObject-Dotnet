@@ -7,6 +7,8 @@ Please feel free to copy or embed this code to your own project. Happy coding!
 
 For the latest Melissa Email Object release notes, please visit: https://releasenotes.melissa.com/on-premise-api/email-object/
 
+For further details, please visit: https://docs.melissa.com/on-premise-api/email-object/email-object-quickstart.html
+
 The console will ask the user for:
 
 - Email 
@@ -21,7 +23,7 @@ And return
 
 ## Tested Environments
 - Windows 10 64-bit .NET 7.0, Powershell 5.1
-- Melissa data files for 2024-02
+- Melissa data files for 2024-03
 
 ## Required File(s) and Programs
 
@@ -64,9 +66,10 @@ Once clicked, your web browser will begin downloading an installer for the SDK. 
 #### Set up Powershell settings
 If running Powershell for the first time, you will need to run this command in the Powershell console: `Set-ExecutionPolicy RemoteSigned`.
 The console will then prompt you with the following warning shown in the image below. 
+
  - Enter `'A'`. 
- 	- If successful, the console will not output any messages. (You may need to run Powershell as administrator to enforce this setting).
-	
+    - If successful, the console will not output any messages. (You may need to run Powershell as administrator to enforce this setting).
+
  ![alt text](/screenshots/powershell_executionpolicy.png)
 
 ----------------------------------------
@@ -88,10 +91,11 @@ Melissa Updater is a CLI application allowing the user to update their Melissa a
 
 #### Different ways to get data file(s)
 1.  Using Melissa Updater
-	- It will handle all of the data download/path and dll(s) for you. 
-2.  If you already have the latest DQS Release (ZIP), you can find the data file(s) and dll(s) in there
-	- Use the location of where you copied/installed the data and update the "$DataPath" variable in the powershell script.
-	- Copy all the dll(s) mentioned above into the `MelissaEmailObjectWindowsDotnet` project folder.
+    - It will handle all of the data download/path and dll(s) for you. 
+2.  If you already have the latest DQS release zip, you can find the data file(s) and dll(s) in there
+    - Use the location of where you copied/installed the data and update the "$DataPath" variable in the powershell script.
+    - Comment out this line "DownloadDataFiles -license $License" in the powershell script.
+    - This will prevent you from having to redownload all the files.
 
 ## Run Powershell Script
 Parameters:
@@ -106,22 +110,22 @@ Parameters:
 When you have modified the script to match your data location, let's run the script. There are two modes:
 - Interactive 
 
-	The script will prompt the user for an email address, then use the provided email to test Email Object. For example:
-	```
-	$ .\MelissaEmailObjectWindowsDotnet.ps1
-	```
+    The script will prompt the user for an email address, then use the provided email to test Email Object. For example:
+    ```
+    $ .\MelissaEmailObjectWindowsDotnet.ps1
+    ```
     For quiet mode:
     ```
     $ .\MelissaEmailObjectWindowsDotnet.ps1 -quiet
     ```
 - Command Line 
 
-	You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email Object. For example:
-	```
+    You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email Object. For example:
+    ```
     $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com"
     $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>"
     ```
-	For quiet mode:
+    For quiet mode:
     ```
     $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -quiet
     $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
