@@ -3,7 +3,7 @@
 
 ######################### Parameters ##########################
 
-param($email = '""', $license = '', [switch]$quiet = $false)
+param($email = '""', $dataPath = '', $license = '', [switch]$quiet = $false)
 
 ######################### Classes ##########################
 
@@ -18,7 +18,7 @@ class FileConfig {
 
 ######################### Config ###########################
 
-$RELEASE_VERSION = '2024.03'
+$RELEASE_VERSION = '2024.04'
 $ProductName = "DQ_EMAIL_DATA"
 
 # Uses the location of the .ps1 file 
@@ -27,13 +27,22 @@ Set-Location $CurrentPath
 $ProjectPath = "$CurrentPath\MelissaEmailObjectWindowsDotnet"
 
 $BuildPath = "$ProjectPath\Build"
-If (!(Test-Path $BuildPath)) {
+if (!(Test-Path $BuildPath)) {
   New-Item -Path $ProjectPath -Name 'Build' -ItemType "directory"
 }
 
-$DataPath = "$ProjectPath\Data" # To use your own data file(s), change to your DQS release data file(s) directory
-If (!(Test-Path $DataPath) -and ($DataPath -eq "$ProjectPath\Data")) {
+if ([string]::IsNullOrEmpty($dataPath)) {
+  $DataPath = "$ProjectPath\Data" 
+}
+
+if (!(Test-Path $DataPath) -and ($DataPath -eq "$ProjectPath\Data")) {
   New-Item -Path $ProjectPath -Name 'Data' -ItemType "directory"
+}
+elseif (!(Test-Path $DataPath) -and ($DataPath -ne "$ProjectPath\Data")) {
+  Write-Host "`nData file path does not exist. Please check that your file path is correct."
+  Write-Host "`nAborting program, see above.  Press any button to exit.`n"
+  $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") > $null
+  exit
 }
 
 $DLLs = @(
@@ -154,6 +163,23 @@ if ([string]::IsNullOrEmpty($License)) {
 if ([string]::IsNullOrEmpty($License)) {
   Write-Host "`nLicense String is invalid!"
   exit
+}
+
+# Get data file path (either from parameters or user input)
+if ($DataPath -eq "$ProjectPath\Data") {
+  $dataPathInput = Read-Host "Please enter your data files path directory if you have already downloaded the release zip.`nOtherwise, the data files will be downloaded using the Melissa Updater (Enter to skip)"
+
+  if (![string]::IsNullOrEmpty($dataPathInput)) {
+    if (!(Test-Path $dataPathInput)) {
+      Write-Host "`nData file path does not exist. Please check that your file path is correct."
+      Write-Host "`nAborting program, see above.  Press any button to exit.`n"
+      $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") > $null
+      exit
+    }
+    else {
+      $DataPath = $dataPathInput
+    }
+  }
 }
 
 # Use Melissa Updater to download data file(s)
