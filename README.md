@@ -23,7 +23,7 @@ And return
 
 ## Tested Environments
 - Windows 10 64-bit .NET 7.0, Powershell 5.1
-- Melissa data files for 2024-09
+- Melissa data files for 2024-10
 
 ## Required File(s) and Programs
 
@@ -76,8 +76,8 @@ The console will then prompt you with the following warning shown in the image b
 
 #### Download this project
 ```
-$ git clone https://github.com/MelissaData/EmailObject-Dotnet
-$ cd EmailObject-Dotnet
+git clone https://github.com/MelissaData/EmailObject-Dotnet
+cd EmailObject-Dotnet
 ```
 
 #### Set up Melissa Updater 
@@ -112,23 +112,23 @@ When you have modified the script to match your data location, let's run the scr
 
     The script will prompt the user for an email address, then use the provided email to test Email Object. For example:
     ```
-    $ .\MelissaEmailObjectWindowsDotnet.ps1
+    .\MelissaEmailObjectWindowsDotnet.ps1
     ```
     For quiet mode:
     ```
-    $ .\MelissaEmailObjectWindowsDotnet.ps1 -quiet
+    .\MelissaEmailObjectWindowsDotnet.ps1 -quiet
     ```
 - Command Line 
 
     You can pass an email address in ```-email``` parameter and a license string in ```-license``` parameter to test Email Object. For example:
     ```
-    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com"
-    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>"
+    .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com"
+    .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>"
     ```
     For quiet mode:
     ```
-    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -quiet
-    $ .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
+    .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -quiet
+    .\MelissaEmailObjectWindowsDotnet.ps1 -email "info@melissa.com" -license "<your_license_string>" -quiet
     ```
 This is the expected output from a successful setup for interactive mode:
 
