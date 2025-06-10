@@ -18,7 +18,7 @@ class FileConfig {
 
 ######################### Config ###########################
 
-$RELEASE_VERSION = '2025.05'
+$RELEASE_VERSION = '2025.06'
 $ProductName = "DQ_EMAIL_DATA"
 
 # Uses the location of the .ps1 file 
@@ -207,7 +207,7 @@ Write-Host "All file(s) have been downloaded/updated!"
 # Build project
 Write-Host "`n=========================== BUILD PROJECT =========================="
 
-dotnet publish -f="net7.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
+dotnet publish -f="net8.0" -c Release -o $BuildPath MelissaEmailObjectWindowsDotnet\MelissaEmailObjectWindowsDotnet.csproj
 
 # Run project
 if ([string]::IsNullOrEmpty($email)) {
