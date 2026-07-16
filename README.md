@@ -72,8 +72,8 @@ The console will then prompt you with the following warning shown in the image b
 
 #### Download this project
 ```
-git clone https://git.melissadata.com/dtgroup/melissadataobjectexamples/net/melissadataemailobjectwindowsnetexample.git
-cd melissadataemailobjectwindowsnetexample
+git clone https://github.com/MelissaData/EmailObject-Dotnet
+cd EmailObject-Dotnet
 ```
 
 #### Set up Melissa Updater 
